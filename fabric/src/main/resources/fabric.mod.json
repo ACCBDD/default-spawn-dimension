@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "default_spawn_dimension",
+  "version": "${version}",
+  "name": "Default Spawn Dimension",
+  "description": "A simple mod to change the default spawn dimension.",
+  "authors": [
+    "ACCBDD"
+  ],
+  "contact": {
+    "homepage": "ACCBDD.github.io"
+  },
+  "license": "MIT",
+  "icon": "assets/default_spawn_dimension/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.accbdd.default_spawn_dimension.fabric.Fabric"
+    ],
+    "client": [
+      "com.accbdd.default_spawn_dimension.fabric.client.FabricClient"
+    ]
+  },
+  "mixins": [
+    "default_spawn_dimension.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.2",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "architectury": ">=9.2.14",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
