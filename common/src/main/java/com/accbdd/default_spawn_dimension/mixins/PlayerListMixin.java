@@ -21,8 +21,19 @@ public class PlayerListMixin {
         return DimensionConfig.getStartingDim();
     }
 
+    /**
+     * redirects fallback dimension for spawning if bed or lodestone is missing
+     */
     @Redirect(method = "respawn", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/MinecraftServer;overworld()Lnet/minecraft/server/level/ServerLevel;"))
     private ServerLevel redirectFallbackDimension(MinecraftServer instance) {
+        return instance.getLevel(DimensionConfig.getStartingDim());
+    }
+
+    /**
+     * redirects default dimension for player's first time logging in, for spawn location purposes
+     */
+    @Redirect(method = "getPlayerForLogin", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/MinecraftServer;overworld()Lnet/minecraft/server/level/ServerLevel;"))
+    private ServerLevel redirectLoginDefaultDimension(MinecraftServer instance) {
         return instance.getLevel(DimensionConfig.getStartingDim());
     }
 }
